@@ -1,0 +1,15 @@
+{
+   "namespace":"ru.pitstt",
+   "type":"record",
+   "doc":"Message Value",
+   "name":"Message",
+   "fields":[
+      {
+         "name":"text",
+         "type":"string"
+      },{
+         "name":"chatId",
+         "type":"long"
+      }
+   ]
+}

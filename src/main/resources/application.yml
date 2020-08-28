@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: tg-bot-covid-registration
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: group_id
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.LongDeserializer
+      value-deserializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroDeserializer
+      properties:
+        schema:
+          registry:
+            url: http://localhost:8081
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.LongSerializer
+      value-serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+      properties:
+        schema:
+          registry:
+            url: http://localhost:8081
+    streams:
+      bootstrap-servers: localhost:9092
+      properties:
+        processing:
+          guarantee: exactly_once # default = at_least_once
+        num:
+          standby:
+            replicas: 0 # default = 0
+          stream:
+            threads: 3 # default = 1
+        default:
+          key:
+            serde: org.apache.kafka.common.serialization.Serdes$LongSerde
+          value:
+            serde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+        schema:
+          registry:
+            url: http://localhost:8081
+
+app:
+  threads: 3
+  input-topic: inputTopic
+  moscow-topic: moscowTopic
+  krasnodar-topic: krasnodarTopic
+  result-topic: resultTopic
+  id: 1
+
+tg:
+  token:
+  name:

@@ -1,0 +1,32 @@
+{
+   "namespace":"ru.pitstt",
+   "type":"record",
+   "doc":"User Value",
+   "name":"User",
+   "fields":[
+      {
+         "name":"chatId",
+         "type":"long"
+      },
+      {
+         "name":"name",
+         "type":"string"
+      },
+      {
+         "name":"surname",
+         "type":"string"
+      },
+      {
+         "name":"patronymic",
+         "type":"string"
+      },
+      {
+         "name":"dob",
+         "type":"string"
+      },
+      {
+         "name":"city",
+         "type":"string"
+      }
+   ]
+}
